@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Seaside Stay - Mockup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: linear-gradient(135deg, #f7fafc 0%, #e2e8f0 100%);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(219, 234, 254, 0.3) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Decorative elements */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        /* Welcome Section */
+        .welcome {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .welcome-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .welcome-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+        
+        .welcome-text p {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+        }
+        
+        .welcome-images {
+            position: relative;
+        }
+        
+        .welcome-images img {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .overlay-image {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 60%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Featured Apartments */
+        .apartments {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+        
+        .section-header p {
+            color: #4a5568;
+            font-size: 1.1rem;
+        }
+        
+        .apartments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .apartment-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .apartment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .apartment-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1a202c;
+        }
+        
+        .card-content p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        
+        .capacity {
+            background: #f1f5f9;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #4a5568;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #2563eb;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+        
+        .feature-card p {
+            color: #4a5568;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(219, 234, 254, 0.1) 100%);
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+        
+        .cta p {
+            color: #4a5568;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: #a0aec0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content,
+            .welcome-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .apartments-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header h2,
+            .welcome-text h2,
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Modern Seaside Stay</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#apartamentos">Apartamentos</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <div class="hero-text">
+                    <h1>Tu Escape Perfecto Junto al Mar</h1>
+                    <p>Descubre nuestros exclusivos apartamentos frente al mar con vistas panorámicas, comodidades modernas y la experiencia de lujo que mereces.</p>
+                    <a href="#apartamentos" class="btn-primary">Explorar Apartamentos</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop" alt="Vista del mar desde apartamento de lujo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="container">
+            <div class="welcome-content">
+                <div class="welcome-text animate-fade-in">
+                    <h2>Bienvenido a Tu Hogar Junto al Mar</h2>
+                    <p>Ofrecemos una experiencia única de alojamiento donde el lujo se encuentra con la comodidad. Nuestros apartamentos cuidadosamente diseñados brindan el escape perfecto para aquellos que buscan relajación y elegancia.</p>
+                    <p>Desde vistas panorámicas del océano hasta comodidades de clase mundial, cada detalle ha sido pensado para crear recuerdos inolvidables.</p>
+                    <a href="#servicios" class="btn-primary">Conoce Más</a>
+                </div>
+                <div class="welcome-images animate-fade-in">
+                    <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop" class="main-image" alt="Vista panorámica del mar">
+                    <img src="https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=400&h=300&fit=crop" class="overlay-image" alt="Interior de apartamento de lujo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Apartments -->
+    <section class="apartments" id="apartamentos">
+        <div class="container">
+            <div class="section-header animate-fade-in">
+                <h2>Apartamentos Destacados</h2>
+                <p>Descubre nuestros alojamientos más populares, cada uno diseñado para ofrecer una experiencia única e inolvidable.</p>
+            </div>
+            
+            <div class="apartments-grid">
+                <div class="apartment-card animate-fade-in">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop" alt="Suite Deluxe Vista al Mar">
+                    <div class="card-content">
+                        <h3>Suite Deluxe Vista al Mar</h3>
+                        <p>Suite lujosa con vistas panorámicas al mar, comodidades modernas y balcón privado.</p>
+                        <div class="card-info">
+                            <span class="price">€180/noche</span>
+                            <span class="capacity">2 huéspedes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="apartment-card animate-fade-in">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop" alt="Apartamento Familiar Premium">
+                    <div class="card-content">
+                        <h3>Apartamento Familiar Premium</h3>
+                        <p>Espacioso apartamento ideal para familias, con cocina completa y vistas impresionantes.</p>
+                        <div class="card-info">
+                            <span class="price">€250/noche</span>
+                            <span class="capacity">4 huéspedes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="apartment-card animate-fade-in">
+                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&h=600&fit=crop" alt="Estudio Ejecutivo Playa">
+                    <div class="card-content">
+                        <h3>Estudio Ejecutivo Playa</h3>
+                        <p>Elegante estudio con acceso directo a la playa, diseño moderno y acabados premium.</p>
+                        <div class="card-info">
+                            <span class="price">€150/noche</span>
+                            <span class="capacity">2 huéspedes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="servicios">
+        <div class="container">
+            <div class="section-header animate-fade-in">
+                <h2>Comodidades de Lujo</h2>
+                <p>Disfruta de instalaciones de clase mundial diseñadas para hacer tu estancia inolvidable.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">🏖️</div>
+                    <h3>Acceso Directo a la Playa</h3>
+                    <p>Disfruta del acceso exclusivo a nuestra playa privada con aguas cristalinas y arena dorada.</p>
+                </div>
+                
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">🏊‍♂️</div>
+                    <h3>Piscinas Exclusivas</h3>
+                    <p>Relájate en nuestras piscinas infinitas con vistas panorámicas al océano.</p>
+                </div>
+                
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">🍽️</div>
+                    <h3>Restaurante Gourmet</h3>
+                    <p>Saborea la cocina local e internacional en nuestro restaurante con vista al mar.</p>
+                </div>
+                
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">📶</div>
+                    <h3>Wi-Fi de Alta Velocidad</h3>
+                    <p>Mantente conectado con internet de alta velocidad gratuito en todas las áreas.</p>
+                </div>
+                
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">☕</div>
+                    <h3>Bar Lounge</h3>
+                    <p>Disfruta de cócteles artesanales y bebidas premium en nuestro bar junto a la piscina.</p>
+                </div>
+                
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">📍</div>
+                    <h3>Ubicación Privilegiada</h3>
+                    <p>Situado en el corazón de la costa, cerca de atracciones y actividades locales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container animate-fade-in">
+            <h2>¿Listo para Tu Escape Perfecto?</h2>
+            <p>Reserva ahora y descubre la experiencia de lujo que has estado buscando. Ofertas especiales disponibles para reservas anticipadas.</p>
+            <a href="#contacto" class="btn-primary">Reservar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <p>&copy; 2024 Modern Seaside Stay. Creando experiencias inolvidables junto al mar.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        window.addEventListener('scroll', () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                } else {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(30px)';
+                }
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            elements.forEach(element => {
+                element.style.transition = 'all 0.8s ease-out';
+            });
+        });
+    </script>
+</body>
+</html>
