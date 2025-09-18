@@ -4,37 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delta Tattoo Calella - Estudio de Tatuajes Profesional</title>
-    <meta name="description" content="Delta Tattoo Calella - Estudio profesional de tatuajes en Barcelona. Especialistas en realismo, piercings, cover up y microrealismo. Más de 10 años de experiencia.">
+    <meta name="description" content="Delta Tattoo Calella - Estudio profesional de tatuajes en Barcelona. Especialistas en realismo, piercings, cover up y microrealismo.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <style>
+        /* Design System Variables - Matching the project */
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 222.2 84% 4.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 222.2 84% 4.9%;
+            --primary: 203 89% 53%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 210 40% 96%;
+            --secondary-foreground: 222.2 84% 4.9%;
+            --muted: 210 40% 96%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+            --accent: 210 40% 96%;
+            --accent-foreground: 222.2 84% 4.9%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 214.3 31.8% 91.4%;
+            --input: 214.3 31.8% 91.4%;
+            --ring: 203 89% 53%;
+            --radius: 0.5rem;
+            --sea-light: #E0F2F7;
+            --sea: #1E88E5;
+            --sea-dark: #0D47A1;
+            --sand-light: #F5F5DC;
+            --sand: #E6D2B5;
+            --sand-dark: #D2B48C;
+        }
+
+        .dark {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --card: 222.2 84% 4.9%;
+            --card-foreground: 210 40% 98%;
+            --popover: 222.2 84% 4.9%;
+            --popover-foreground: 210 40% 98%;
+            --primary: 203 89% 53%;
+            --primary-foreground: 222.2 84% 4.9%;
+            --secondary: 217.2 32.6% 17.5%;
+            --secondary-foreground: 210 40% 98%;
+            --muted: 217.2 32.6% 17.5%;
+            --muted-foreground: 215 20.2% 65.1%;
+            --accent: 217.2 32.6% 17.5%;
+            --accent-foreground: 210 40% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 217.2 32.6% 17.5%;
+            --input: 217.2 32.6% 17.5%;
+            --ring: 203 89% 53%;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #0a0a0a;
+            color: hsl(var(--foreground));
+            background: hsl(var(--background));
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 1rem 0;
             position: fixed;
-            width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .nav {
@@ -44,10 +116,10 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ff6b35;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--primary));
+            font-family: 'Playfair Display', serif;
         }
 
         .nav-links {
@@ -57,148 +129,217 @@
         }
 
         .nav-links a {
-            color: white;
+            color: hsl(var(--foreground));
             text-decoration: none;
-            transition: color 0.3s ease;
             font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #ff6b35;
+            color: hsl(var(--primary));
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: hsl(var(--primary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23111" width="1200" height="600"/><g fill="%23222"><circle cx="200" cy="100" r="50"/><circle cx="800" cy="200" r="30"/><circle cx="400" cy="350" r="40"/><circle cx="1000" cy="450" r="25"/></g></svg>');
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1565058379802-bbe93b2c7bb4?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            height: 100vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
             color: white;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fade-in 1s ease-out;
+        }
+
+        .hero-content .subtitle {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.05em;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: #ff6b35;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
-            animation: fadeInUp 1s ease-out;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
+            opacity: 0.9;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            animation: fadeInUp 1s ease-out 0.2s both;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            background: hsl(var(--primary));
             color: white;
-            padding: 15px 30px;
-            text-decoration: none;
+            padding: 1rem 2rem;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
-            animation: fadeInUp 1s ease-out 0.4s both;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255,107,53,0.6);
+            box-shadow: 0 8px 25px rgba(30, 136, 229, 0.4);
         }
 
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             color: white;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        /* Animated wave */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+            animation: wave 10s ease-in-out infinite;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
         }
 
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #ff6b35;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: hsl(var(--foreground));
         }
 
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
         .service-card {
-            background: rgba(255,255,255,0.05);
+            background: hsl(var(--card));
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 1rem;
+            border: 1px solid hsl(var(--border));
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,107,53,0.2);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            background: rgba(255,107,53,0.1);
-            border-color: rgba(255,107,53,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: hsl(var(--primary));
         }
 
         .service-icon {
-            font-size: 3rem;
-            color: #ff6b35;
-            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: hsl(var(--primary) / 0.1);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            color: hsl(var(--primary));
         }
 
         .service-card h3 {
             margin-bottom: 1rem;
-            color: #ff6b35;
+            color: hsl(var(--foreground));
         }
 
-        /* Portfolio Section */
+        .service-card p {
+            color: hsl(var(--muted-foreground));
+            line-height: 1.6;
+        }
+
+        /* Portfolio */
         .portfolio {
-            padding: 100px 0;
-            background: #0a0a0a;
-            color: white;
+            background: hsl(var(--muted) / 0.5);
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .portfolio-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 1rem;
             overflow: hidden;
-            aspect-ratio: 1;
+            aspect-ratio: 4/3;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .portfolio-item:hover {
             transform: scale(1.02);
-            box-shadow: 0 15px 40px rgba(255,107,53,0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .portfolio-item:hover img {
@@ -215,6 +356,7 @@
             display: flex;
             align-items: flex-end;
             padding: 2rem;
+            color: white;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -224,12 +366,6 @@
         }
 
         /* About Section */
-        .about {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-        }
-
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -237,42 +373,31 @@
             align-items: center;
         }
 
-        .about-text h2 {
-            color: #ff6b35;
-            margin-bottom: 2rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
         .stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .stat {
             text-align: center;
             padding: 1.5rem;
-            background: rgba(255,107,53,0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(255,107,53,0.3);
+            background: hsl(var(--primary) / 0.1);
+            border-radius: 1rem;
+            border: 1px solid hsl(var(--primary) / 0.2);
         }
 
         .stat-number {
             font-size: 2rem;
-            font-weight: bold;
-            color: #ff6b35;
+            font-weight: 700;
+            color: hsl(var(--primary));
+            display: block;
         }
 
         /* Testimonials */
         .testimonials {
-            padding: 100px 0;
-            background: #0a0a0a;
-            color: white;
+            background: hsl(var(--muted) / 0.3);
         }
 
         .testimonial-grid {
@@ -283,36 +408,32 @@
         }
 
         .testimonial {
-            background: rgba(255,255,255,0.05);
+            background: hsl(var(--card));
             padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,107,53,0.2);
-            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
         }
 
         .testimonial-text {
             font-style: italic;
             margin-bottom: 1rem;
+            color: hsl(var(--muted-foreground));
             line-height: 1.6;
         }
 
         .testimonial-author {
-            color: #ff6b35;
-            font-weight: bold;
-        }
-
-        .stars {
-            color: #ffd700;
-            margin: 0.5rem 0;
+            color: hsl(var(--primary));
+            font-weight: 600;
         }
 
         /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-        }
-
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -322,7 +443,7 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .contact-item {
@@ -330,22 +451,30 @@
             align-items: center;
             gap: 1rem;
             padding: 1.5rem;
-            background: rgba(255,107,53,0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(255,107,53,0.3);
+            background: hsl(var(--card));
+            border-radius: 1rem;
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .contact-icon {
-            font-size: 1.5rem;
-            color: #ff6b35;
-            min-width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: hsl(var(--primary));
+            border-radius: 50%;
+            color: white;
+            flex-shrink: 0;
         }
 
         .contact-form {
-            background: rgba(255,255,255,0.05);
+            background: hsl(var(--card));
             padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255,107,53,0.2);
+            border-radius: 1rem;
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .form-group {
@@ -355,51 +484,53 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #ff6b35;
+            font-weight: 500;
+            color: hsl(var(--foreground));
         }
 
         .form-group input,
+        .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255,107,53,0.3);
-            border-radius: 8px;
-            background: rgba(0,0,0,0.3);
-            color: white;
+            padding: 0.75rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.5rem;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
             font-family: inherit;
+            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
+        .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #ff6b35;
-            box-shadow: 0 0 10px rgba(255,107,53,0.3);
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            background: hsl(var(--primary));
             color: white;
-            padding: 12px 30px;
+            padding: 0.75rem 2rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 0.5rem;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
             width: 100%;
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+            background: hsl(var(--primary) / 0.9);
+            transform: translateY(-1px);
         }
 
         /* Footer */
         .footer {
-            background: #0a0a0a;
-            color: white;
+            background: hsl(var(--muted));
             padding: 3rem 0 1rem;
-            text-align: center;
-            border-top: 1px solid rgba(255,107,53,0.2);
+            border-top: 1px solid hsl(var(--border));
         }
 
         .footer-content {
@@ -410,7 +541,7 @@
         }
 
         .footer-section h3 {
-            color: #ff6b35;
+            color: hsl(var(--primary));
             margin-bottom: 1rem;
         }
 
@@ -422,30 +553,50 @@
         }
 
         .social-link {
-            display: inline-block;
-            padding: 10px;
-            background: rgba(255,107,53,0.1);
-            border: 1px solid rgba(255,107,53,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: hsl(var(--primary));
             border-radius: 50%;
-            color: #ff6b35;
+            color: white;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: rgba(255,107,53,0.2);
+            background: hsl(var(--primary) / 0.8);
             transform: translateY(-2px);
         }
 
         /* Animations */
-        @keyframes fadeInUp {
+        @keyframes fade-in {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-25%);
             }
         }
 
@@ -459,14 +610,7 @@
                 font-size: 2.5rem;
             }
 
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
+            .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
             }
@@ -474,11 +618,28 @@
             .stats {
                 grid-template-columns: 1fr;
             }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        /* Utility classes */
+        .animate-fade-in {
+            animation: fade-in 0.6s ease-out;
+        }
+
+        .text-center {
+            text-align: center;
         }
     </style>
 </head>
@@ -501,81 +662,112 @@
     <section id="inicio" class="hero">
         <div class="container">
             <div class="hero-content">
+                <span class="subtitle">Estudio Profesional de Tatuajes</span>
                 <h1>DELTA TATTOO CALELLA</h1>
-                <p>Estudio profesional de tatuajes en Barcelona con más de 10 años de experiencia. Especialistas en realismo, piercings, cover up y microrealismo.</p>
+                <p>Más de 10 años creando arte sobre piel en Barcelona. Especialistas en realismo, piercings, cover up y microrealismo con técnicas de vanguardia.</p>
                 <a href="#contacto" class="cta-button">Reservar Cita</a>
             </div>
         </div>
+        
+        <div class="scroll-indicator">
+            <span>Descubre más</span>
+            <i data-lucide="chevron-down"></i>
+        </div>
+        
+        <div class="wave"></div>
     </section>
 
     <!-- Services Section -->
-    <section id="servicios" class="services">
+    <section id="servicios" class="section">
         <div class="container">
             <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Ofrecemos una amplia gama de servicios de tatuaje con los más altos estándares de calidad y seguridad</p>
+            
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i data-lucide="paintbrush" size="32"></i>
+                    </div>
                     <h3>Realismo</h3>
-                    <p>Tatuajes hiperrealistas con técnicas avanzadas y atención al detalle excepcional.</p>
+                    <p>Tatuajes hiperrealistas con técnicas avanzadas y atención al detalle excepcional para crear obras maestras únicas.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">💎</div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i data-lucide="gem" size="32"></i>
+                    </div>
                     <h3>Piercings</h3>
-                    <p>Perforación profesional con materiales de alta calidad y técnicas seguras.</p>
+                    <p>Perforación profesional con materiales de alta calidad y técnicas seguras en un ambiente esterilizado.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🔄</div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i data-lucide="refresh-cw" size="32"></i>
+                    </div>
                     <h3>Cover Up</h3>
-                    <p>Transformamos tatuajes antiguos en obras de arte completamente nuevas.</p>
+                    <p>Transformamos tatuajes antiguos en obras de arte completamente nuevas con diseños innovadores.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i data-lucide="zoom-in" size="32"></i>
+                    </div>
                     <h3>Microrealismo</h3>
-                    <p>Detalles increíbles en espacios pequeños con precisión milimétrica.</p>
+                    <p>Detalles increíbles en espacios pequeños con precisión milimétrica y técnicas especializadas.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">⏰</div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i data-lucide="clock" size="32"></i>
+                    </div>
                     <h3>Tatuajes Temporales</h3>
-                    <p>Perfectos para probar diseños antes del tatuaje definitivo.</p>
+                    <p>Perfectos para probar diseños antes del tatuaje definitivo o para eventos especiales.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
+                
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i data-lucide="palette" size="32"></i>
+                    </div>
                     <h3>Diseño Personalizado</h3>
-                    <p>Creamos diseños únicos adaptados a tus ideas y estilo personal.</p>
+                    <p>Creamos diseños únicos adaptados a tus ideas y estilo personal con consulta previa.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
+    <section id="portfolio" class="section portfolio">
         <div class="container">
-            <h2 class="section-title">Portfolio</h2>
+            <h2 class="section-title">Nuestro Portfolio</h2>
+            <p class="section-subtitle">Una muestra de nuestros trabajos más destacados que demuestran nuestra experiencia y técnica</p>
+            
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="tattoos/tattoo-1.jpg" alt="Tatuaje realista en brazo" loading="lazy">
+                    <img src="tattoos/tattoo-1.jpg" alt="Tatuaje realista en brazo - Delta Tattoo Calella" loading="lazy">
                     <div class="portfolio-overlay">
                         <div>
                             <h3>Realismo Épico</h3>
-                            <p>Tatuaje completo en brazo con detalles impresionantes</p>
+                            <p>Tatuaje completo en brazo con detalles impresionantes y técnica de sombreado avanzada</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="portfolio-item">
-                    <img src="tattoos/tattoo-gallery.jpg" alt="Galería de tatuajes" loading="lazy">
+                    <img src="tattoos/tattoo-gallery.jpg" alt="Galería de tatuajes variados - Delta Tattoo" loading="lazy">
                     <div class="portfolio-overlay">
                         <div>
                             <h3>Variedad de Estilos</h3>
-                            <p>Desde skulls hasta demonios, dominamos todos los estilos</p>
+                            <p>Desde skulls hasta demonios, dominamos todos los estilos con máxima calidad</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="portfolio-item">
-                    <img src="tattoos/tattoo-eagle.jpg" alt="Tatuaje de águila" loading="lazy">
+                    <img src="tattoos/tattoo-eagle.jpg" alt="Tatuaje de águila realista - Delta Tattoo Calella" loading="lazy">
                     <div class="portfolio-overlay">
                         <div>
                             <h3>Águila Realista</h3>
-                            <p>Técnica de color y sombreado profesional</p>
+                            <p>Técnica de color y sombreado profesional con detalles hiperrealistas</p>
                         </div>
                     </div>
                 </div>
@@ -584,31 +776,32 @@
     </section>
 
     <!-- About Section -->
-    <section id="nosotros" class="about">
+    <section id="nosotros" class="section">
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Sobre Delta Tattoo</h2>
+                    <h2>Sobre Delta Tattoo Calella</h2>
                     <p>En Delta Tattoo Calella llevamos más de una década dedicados al arte del tatuaje. Nuestro estudio combina profesionalidad, experiencia y pasión por crear obras únicas en la piel de nuestros clientes.</p>
                     <p>Nos especializamos en realismo, pero dominamos una amplia variedad de estilos. Cada tatuaje es una colaboración entre el artista y el cliente, asegurándonos de que el resultado final supere siempre las expectativas.</p>
-                    <p>La seguridad y la higiene son nuestras prioridades. Utilizamos equipos esterilizados y materiales de la más alta calidad en cada sesión.</p>
+                    <p>La seguridad y la higiene son nuestras prioridades absolutas. Utilizamos equipos esterilizados y materiales de la más alta calidad en cada sesión.</p>
                 </div>
+                
                 <div class="stats">
                     <div class="stat">
-                        <div class="stat-number">10+</div>
+                        <span class="stat-number">10+</span>
                         <div>Años de Experiencia</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">1000+</div>
+                        <span class="stat-number">1000+</span>
                         <div>Tatuajes Realizados</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">5⭐</div>
+                        <span class="stat-number">5⭐</span>
                         <div>Valoración Media</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">100%</div>
-                        <div>Satisfacción</div>
+                        <span class="stat-number">100%</span>
+                        <div>Satisfacción Cliente</div>
                     </div>
                 </div>
             </div>
@@ -616,32 +809,38 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonios" class="testimonials">
+    <section id="testimonios" class="section testimonials">
         <div class="container">
             <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <p class="section-subtitle">Testimonios reales de clientes satisfechos que han confiado en nosotros</p>
+            
             <div class="testimonial-grid">
                 <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"En delta tattoo se nota la profesionalidad y los años de experiencia que tienen. Me tatuó muy rápido. Me ayudó con los diseños e incluso me ayudó a que se vieran mejor con algunos retoques según su parecer. 100% recomendado a toda persona que se quiera tatuar."</p>
                     <div class="testimonial-author">- Enric Costa Jimenez</div>
                 </div>
+                
                 <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"Tuve una experiencia excelente. El estudio es muy profesional, el ambiente cómodo y seguro, y el tatuador demostró un gran talento y dedicación. Supo captar perfectamente lo que quería."</p>
                     <div class="testimonial-author">- Sonia Garcia Abellan</div>
                 </div>
+                
                 <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"Un tatuador realmente amable, te hace sentir cómodo de inmediato. Es rápido y el resultado estético es genial. ¡Una excelente relación calidad-precio! Muy recomendable."</p>
                     <div class="testimonial-author">- Noah</div>
                 </div>
+                
                 <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"El Gallo es lo más, no solo nos ha tatuado muy bien sino que nos ha hecho pasar un rato muy agradable, sin duda lo recomendamos."</p>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Somos las tres xavalas que han ido hace un rato. El Gallo es lo más, no solo nos ha tatuado muy bien sino que nos ha hecho pasar un rato muy agradable, sin duda lo recomendamos."</p>
                     <div class="testimonial-author">- Paula</div>
                 </div>
+                
                 <div class="testimonial">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="stars">★★★★★</div>
                     <p class="testimonial-text">"Ya me hice dos piercings. Están súper bien hechos, no duelen, no se hincharon. Nada. Recomiendo al cien por cien."</p>
                     <div class="testimonial-author">- RNA</div>
                 </div>
@@ -650,58 +849,75 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contacto" class="contact">
+    <section id="contacto" class="section">
         <div class="container">
             <h2 class="section-title">Contacto</h2>
+            <p class="section-subtitle">¿Listo para tu próximo tatuaje? Contáctanos para una consulta personalizada</p>
+            
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">📍</div>
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin" size="20"></i>
+                        </div>
                         <div>
                             <strong>Dirección</strong><br>
                             Carrer Bisbe Sivilla, 6<br>
                             08370 Calella, Barcelona
                         </div>
                     </div>
+                    
                     <div class="contact-item">
-                        <div class="contact-icon">📞</div>
+                        <div class="contact-icon">
+                            <i data-lucide="phone" size="20"></i>
+                        </div>
                         <div>
                             <strong>Teléfono</strong><br>
                             650 400 303
                         </div>
                     </div>
+                    
                     <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
+                        <div class="contact-icon">
+                            <i data-lucide="clock" size="20"></i>
+                        </div>
                         <div>
                             <strong>Horario</strong><br>
                             Lunes - Domingo<br>
                             10:30 - 20:30
                         </div>
                     </div>
+                    
                     <div class="contact-item">
-                        <div class="contact-icon">📱</div>
+                        <div class="contact-icon">
+                            <i data-lucide="instagram" size="20"></i>
+                        </div>
                         <div>
                             <strong>Instagram</strong><br>
                             @deltatattoocalella
                         </div>
                     </div>
                 </div>
+                
                 <form class="contact-form">
                     <div class="form-group">
-                        <label for="name">Nombre</label>
+                        <label for="name">Nombre Completo</label>
                         <input type="text" id="name" name="name" required>
                     </div>
+                    
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
+                    
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="service">Servicio Interesado</label>
-                        <select id="service" name="service" style="width: 100%; padding: 12px; border: 1px solid rgba(255,107,53,0.3); border-radius: 8px; background: rgba(0,0,0,0.3); color: white; font-family: inherit;">
+                        <label for="service">Servicio de Interés</label>
+                        <select id="service" name="service" required>
                             <option value="">Selecciona un servicio</option>
                             <option value="realismo">Realismo</option>
                             <option value="piercing">Piercing</option>
@@ -711,10 +927,12 @@
                             <option value="personalizado">Diseño Personalizado</option>
                         </select>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu idea de tatuaje..."></textarea>
+                        <label for="message">Describe tu idea de tatuaje</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Cuéntanos sobre tu idea, tamaño, ubicación en el cuerpo, etc."></textarea>
                     </div>
+                    
                     <button type="submit" class="submit-btn">Enviar Consulta</button>
                 </form>
             </div>
@@ -727,33 +945,46 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Delta Tattoo Calella</h3>
-                    <p>Estudio profesional de tatuajes en el corazón de Calella, Barcelona. Arte sobre piel desde 2010.</p>
+                    <p>Estudio profesional de tatuajes en el corazón de Calella, Barcelona. Arte sobre piel desde hace más de una década.</p>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Servicios</h3>
                     <p>Realismo • Piercings • Cover Up<br>
                     Microrealismo • Tatuajes Temporales<br>
                     Diseño Personalizado</p>
                 </div>
+                
                 <div class="footer-section">
-                    <h3>Horarios</h3>
+                    <h3>Horarios de Atención</h3>
                     <p>Lunes - Domingo<br>
                     10:30 - 20:30<br>
                     <em>Cita previa recomendada</em></p>
                 </div>
             </div>
+            
             <div class="social-links">
-                <a href="https://instagram.com/deltatattoocalella" class="social-link" target="_blank" rel="noopener">📱</a>
-                <a href="tel:650400303" class="social-link">📞</a>
-                <a href="https://maps.google.com/?q=Carrer+Bisbe+Sivilla+6+Calella" class="social-link" target="_blank" rel="noopener">📍</a>
+                <a href="https://instagram.com/deltatattoocalella" class="social-link" target="_blank" rel="noopener">
+                    <i data-lucide="instagram" size="20"></i>
+                </a>
+                <a href="tel:650400303" class="social-link">
+                    <i data-lucide="phone" size="20"></i>
+                </a>
+                <a href="https://maps.google.com/?q=Carrer+Bisbe+Sivilla+6+Calella" class="social-link" target="_blank" rel="noopener">
+                    <i data-lucide="map-pin" size="20"></i>
+                </a>
             </div>
-            <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,107,53,0.2);">
-                © 2024 Delta Tattoo Calella. Todos los derechos reservados.
-            </p>
+            
+            <div class="text-center" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid hsl(var(--border));">
+                <p>© 2024 Delta Tattoo Calella. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -771,18 +1002,50 @@
         // Form submission
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('¡Gracias por tu consulta! Te contactaremos pronto para coordinar tu cita.');
+            alert('¡Gracias por tu consulta! Te contactaremos pronto para coordinar tu cita en Delta Tattoo Calella.');
             this.reset();
         });
 
         // Header background on scroll
+        let lastScrollY = 0;
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                header.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)';
+                header.style.background = 'rgba(255, 255, 255, 0.8)';
+                header.style.backdropFilter = 'blur(16px)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
             }
+            
+            lastScrollY = scrollY;
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and other elements
+        document.querySelectorAll('.service-card, .portfolio-item, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
